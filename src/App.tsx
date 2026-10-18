@@ -29,12 +29,12 @@ import {
 // 1. Design Tokens & Constants (src/constants/colors.ts)
 // ==========================================
 export const LABA_COLORS = {
-  primary: '#16A34A',   // 永續主綠：主按鈕 (CTA)、滑桿軌道高亮、完成徽章、LINE 複製按鈕
+  primary: '#12823D',   // 永續主綠：主按鈕 (CTA)、滑桿軌道高亮、完成徽章、LINE 複製按鈕
   tech: '#0EA5A4',      // 科技湖水藍：SOP 步驟節點、計時器倒數進度環、分頁選中態
-  data: '#3B82F6',      // 專業數據藍：運算所得之重量/容量數值、數據統計容器、單位切換鈕
+  data: '#2454DE',      // 專業數據藍：運算所得之重量/容量數值、數據統計容器、單位切換鈕
   nature: '#65A30D',    // 自然草綠：三寶時蔬標籤、健康提示徽章、大鍋 (≥50人) 警示橫幅
-  surface: '#F8FAFC',   // 頁面背景：全站底色
-  text: '#1F2937',      // 主要文字：主標題、食材品名、核心步驟內文
+  surface: '#F0F5F8',   // 頁面背景：全站底色
+  text: '#12332F',      // 主要文字：主標題、食材品名、核心步驟內文
   textMuted: '#64748B', // 次要文字
 } as const;
 
@@ -790,8 +790,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ unitMode, onUnitChange, onOpenTheoryModal }) => {
   return (
-    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
+    <section className="ds-container tool-page-header"><div className="content-card">
+      <a className="tool-return" href="/#food">← 返回智慧工具箱</a>
+      <div className="pt-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div
             className="w-11 h-11 rounded-2xl flex items-center justify-center text-white shadow-md shrink-0"
@@ -840,7 +841,7 @@ const Header: React.FC<HeaderProps> = ({ unitMode, onUnitChange, onOpenTheoryMod
           <UnitToggle unitMode={unitMode} onChange={onUnitChange} />
         </div>
       </div>
-    </header>
+    </div></section>
   );
 };
 
@@ -1926,10 +1927,10 @@ export default function App() {
           - Tablet (640px ~ 1024px): md:grid-cols-12 雙欄流式版面 (左5 / 右7)
           - Desktop (> 1024px): lg:grid-cols-12 三欄式儀表板 (左3 / 中5 / 右4)
       */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-start">
+      <main className="ds-container flex-1">
+        <div className="laba-grid">
           {/* 左側欄：雙向連動控制盤 + 大鍋警示 + 數據統計卡 */}
-          <div className="md:col-span-5 lg:col-span-4 space-y-4">
+          <div className="laba-control space-y-4">
             <DualControlPanel
               servings={servings}
               setServings={setServings}
@@ -1952,7 +1953,7 @@ export default function App() {
           </div>
 
           {/* 中央欄：食材採買清單 (BOM) */}
-          <div className="md:col-span-7 lg:col-span-5">
+          <div className="laba-bom">
             <IngredientTable
               ingredients={ingredients}
               unitMode={unitMode}
@@ -1963,7 +1964,7 @@ export default function App() {
           </div>
 
           {/* 右側欄：25 分鐘 6 階段工藝時序與倒數計時器 (SOP) */}
-          <div className="md:col-span-12 lg:col-span-3">
+          <div className="laba-sop">
             <SopTimeline
               waterVolumeMl={waterVolumeMl}
               isLargeBatch={isLargeBatch}
@@ -1976,8 +1977,8 @@ export default function App() {
       </main>
 
       {/* 頁尾資訊 */}
-      <footer className="mt-8 border-t border-slate-200 bg-white py-4 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <footer className="platform-footer">
+        <div className="platform-footer-inner">
           <div className="flex items-center gap-2">
             <span
               className="w-2.5 h-2.5 rounded-full inline-block"
