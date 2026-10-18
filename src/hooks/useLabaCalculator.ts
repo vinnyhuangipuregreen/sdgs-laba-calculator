@@ -1,0 +1,1 @@
+export { useLabaCalculator } from '../App';
