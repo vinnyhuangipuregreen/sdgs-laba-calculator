@@ -11,3 +11,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 
 import './design-system.css';
+
+import './responsive.css';

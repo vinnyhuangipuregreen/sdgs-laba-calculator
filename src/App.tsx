@@ -832,6 +832,7 @@ const Header: React.FC<HeaderProps> = ({ unitMode, onUnitChange, onOpenTheoryMod
           <button
             type="button"
             onClick={onOpenTheoryModal}
+            aria-label="典座心法與公式"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-white shadow-sm hover:opacity-95 transition"
             style={{ backgroundColor: LABA_COLORS.primary }}
           >
@@ -1419,7 +1420,7 @@ const IngredientTable: React.FC<IngredientTableProps> = ({
       </div>
 
       {/* 平板與桌面裝置 (≥ 640px)：響應式專業 BOM 表格 */}
-      <div className="hidden sm:block overflow-hidden rounded-xl border border-slate-200">
+      <div className="hidden sm:block overflow-x-auto rounded-xl border border-slate-200">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-600">
